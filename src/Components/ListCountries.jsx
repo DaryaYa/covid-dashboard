@@ -1,14 +1,25 @@
+import styles from "./ListCountries.module.scss";
+
 export const ListCountries = (props) => {
-    return (
-        <ul style={{ maxHeight: "550px" }}>
-            {props.countries.map((country) => (
-                <li
-                    key={country.CountryCode}
-                    onClick={() => props.setCountry(country)}
-                >
-                    <p>{country.Country}</p>
-                </li>
-            ))}
-        </ul>
-    );
+  function sortByTotal(arr) {
+    arr.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed);
+  }
+  sortByTotal(props.countries);
+
+  return (
+    <ul style={{ maxHeight: "550px" }}>
+      {props.countries.map((country) => (
+        <li
+          className={styles.li}
+          key={country.CountryCode}
+          onClick={() => props.setCountry(country)}
+        >
+          <p>
+            <span className={styles.info}>{country.TotalConfirmed}</span>
+            <span>{country.Country}</span>
+          </p>
+        </li>
+      ))}
+    </ul>
+  );
 };
