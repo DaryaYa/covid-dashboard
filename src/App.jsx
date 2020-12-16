@@ -2,39 +2,34 @@ import { useState, useEffect, useCallback } from "react";
 import { Header } from "./Components/Header";
 import { Summary } from "./Components/Summary";
 import { ShowTotalCases } from "./Components/ShowTotalCases";
-import { TableBox } from "./Components/tableBox/TableBox.module";
+import { TableBox } from "./Components/tableBox/TableBox";
 
 const API = "https://api.covid19api.com/summary";
 
 function App() {
   const dataTypes = ["Cases", "Deaths", "Recovered"];
 
-  const [dataCategoriesShown, setDataCategotiesShown] = useState({
-    world: { id: 1, isShown: true, title: "World" },
-    country: { id: 2, isShown: false, title: "Country" },
-    forAllTime: { id: 3, isShown: true, title: "For all time" },
-    forLastDay: { id: 4, isShown: false, title: "For the last day" },
-    total: { id: 5, isShown: true, title: "Total" },
-    perHundredThousandPopulation: {
-      id: 6,
-      isShown: false,
-      title: "Per 100,000 population",
-    },
-  });
+  const dataCategories = {
+    period: ['For all time', 'For the last day'],
+    territory: ['World', 'Country'],
+    population: ['Total', 'Per 100,000 population'],
+  }
+  const [curentCategories, setCurrentCategories] = useState({
+      period: dataCategories.period[0],
+      territory: dataCategories.territory[0],
+      population: dataCategories.population[0],
+    }
+  )
 
-  function changeDataCategoriesShown(categoryId) {
-    setDataCategotiesShown((dataCategoriesShown) => {
-      for (let dataCategory in dataCategoriesShown) {
-        let property = dataCategoriesShown[dataCategory];
+  function changePopulationStatus(categoryStatus) {
 
-        if (property.id === categoryId) {
-          property.isShown = !property.isShown;
-        }
-      }
-      // console.log(dataCategoriesShown.total.isShown);
-      return dataCategoriesShown;
-    });
-    // console.log(dataCategoriesShown.total.isShown);
+    if (dataCategories.population.indexOf(categoryStatus) === 0) {
+      curentCategories.population  = dataCategories.population[1]
+    } else {
+      curentCategories.population  = dataCategories.population[0]
+    }
+
+    setCurrentCategories(curentCategories);
   }
 
   const [data, setData] = useState({ countries: [] });
@@ -68,8 +63,8 @@ function App() {
       )}
       <Summary countries={data.countries} setCountry={setCountry} />
       <TableBox
-        onChange={changeDataCategoriesShown}
-        dataCategoriesShown={dataCategoriesShown}
+        changePopulationStatus={changePopulationStatus}
+        curentCategories={curentCategories}
         countries={data.countries}
         setCountry={setCountry}
         dataTypes={dataTypes}
