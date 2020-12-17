@@ -4,6 +4,7 @@ import { ListCountries } from "./Components/ListCountries";
 import { MapBox } from "./Components/MapBox";
 import { ShowTotalCases } from "./Components/ShowTotalCases";
 import { ChartBox } from "./Components/ChartBox";
+import { ExpansionBlockON } from "./Components/expansionBlock";
 
 const API = "https://api.covid19api.com/summary";
 
@@ -37,6 +38,8 @@ function App() {
                 }}
             >
                 <div
+                    id="listBox"
+                    onMouseEnter={(e) => ExpansionBlockON(e.target)}
                     style={{
                         overflow: "auto",
                         background: "blueviolet",
@@ -48,8 +51,12 @@ function App() {
                         setCountry={setCountry}
                     />
                 </div>
-                <MapBox></MapBox>
+                <MapBox
+                    onMouseEnter={(e) => ExpansionBlockON(e.target)}
+                ></MapBox>
                 <div
+                    id="tableBox"
+                    onMouseEnter={(e) => ExpansionBlockON(e.target)}
                     style={{
                         backgroundColor: "aquamarine",
                         gridArea: "1/3/2/4",
