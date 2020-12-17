@@ -7,7 +7,8 @@ import { ChartBox } from "./Components/ChartBox";
 
 import styles from "./app.module.scss";
 
-const API = "https://api.covid19api.com/summary";
+// const API = "https://api.covid19api.com/summary";
+const API = "https://corona.lmao.ninja/v2/countries";
 
 function App() {
   const [data, setData] = useState({ countries: [] });
@@ -16,7 +17,7 @@ function App() {
       const response = await fetch(API);
       const result = await response.json();
       console.log(result);
-      setData({ countries: result.Countries });
+      setData({ countries: result });
     };
 
     fetchData();
@@ -43,7 +44,7 @@ function App() {
         <div className={styles.showTotalCasesWrapper}>
           {currentCountry && (
             <ShowTotalCases
-              currentCountryTotalConfirmed={currentCountry.TotalConfirmed}
+              currentCountryTotalConfirmed={currentCountry.cases}
             ></ShowTotalCases>
           )}
         </div>
