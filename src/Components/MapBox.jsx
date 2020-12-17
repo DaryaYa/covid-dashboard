@@ -1,10 +1,18 @@
-import React from "react";
+import { MapComponent } from "./MapComponent";
 
-export const MapBox = () => {
+export const MapBox = ({ countriesInfo }) => {
     return (
         <div
             id="mapBox"
-            style={{ background: "chartreuse", gridArea: "1/2/3/3" }}
-        ></div>
+            style={{
+                gridArea: "1/2/3/3",
+                overflow: "hidden",
+            }}
+        >
+            <MapComponent
+                countriesInfo={countriesInfo}
+                styles={{ width: "50px" }}
+            ></MapComponent>
+        </div>
     );
 };
