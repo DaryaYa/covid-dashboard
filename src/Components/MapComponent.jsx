@@ -24,14 +24,16 @@ export const MapComponent = ({ countriesInfo }) => {
                 countriesInfo.result.map((item, index) => {
                     let lat = item.countryInfo.lat;
                     let long = item.countryInfo.long;
+
                     let deathes = item.deaths;
                     let maxWeight = 50;
                     let maxDeaths = 300000;
 
                     let HSLA = 100 - ((deathes / maxDeaths) * 50 + 35);
                     let weight = (maxWeight * deathes) / maxDeaths;
+
                     return (
-                        <FeatureGroup>
+                        <FeatureGroup key={index}>
                             <Popup>
                                 {item.country + `: deathes - ${deathes}`}
                             </Popup>
@@ -43,7 +45,6 @@ export const MapComponent = ({ countriesInfo }) => {
                                         weight < 10 ? weight + 10 : weight
                                     }`,
                                 }}
-                                key={index}
                             />
                         </FeatureGroup>
                     );
