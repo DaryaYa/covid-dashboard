@@ -28,7 +28,7 @@ export const MapComponent = ({ countriesInfo }) => {
                     let deathes = item.deaths;
                     let maxWeight = 50;
                     let maxDeaths = 300000;
-
+                    console.log(item.countryInfo._id);
                     let HSLA = 100 - ((deathes / maxDeaths) * 50 + 35);
                     let weight = (maxWeight * deathes) / maxDeaths;
 
