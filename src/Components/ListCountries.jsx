@@ -2,7 +2,7 @@ import styles from "./ListCountries.module.scss";
 
 export const ListCountries = (props) => {
   function sortByTotal(arr) {
-    arr.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed);
+    arr.sort((a, b) => b.cases - a.cases);
   }
   sortByTotal(props.countries);
 
@@ -11,12 +11,16 @@ export const ListCountries = (props) => {
       {props.countries.map((country) => (
         <li
           className={styles.li}
-          key={country.CountryCode}
+          key={country.countryInfo._id}
           onClick={() => props.setCountry(country)}
         >
           <p>
-            <span className={styles.info}>{country.TotalConfirmed}</span>
-            <span>{country.Country}</span>
+            <span className={styles.info}>{country.cases}</span>
+            <span>
+              {country.country}
+             
+            </span>
+            <img className={styles.img} src={country.countryInfo.flag} alt="flag" />
           </p>
         </li>
       ))}

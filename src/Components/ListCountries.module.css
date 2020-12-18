@@ -9,3 +9,9 @@
   color: wheat;
   border-bottom: 1px solid wheat;
 }
+
+.img {
+  margin-left: 5px;
+  height: 25px;
+  vertical-align: middle;
+}
