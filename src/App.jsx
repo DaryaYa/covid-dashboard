@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Header } from "./Components/Header";
-import { ListCountries } from "./Components/ListCountries";
+import { ListCountries } from "./Components/ListCountries.jsx";
 import { MapBox } from "./Components/MapBox";
 import { ShowTotalCases } from "./Components/ShowTotalCases";
 import { ChartBox } from "./Components/ChartBox";
@@ -29,6 +29,9 @@ function App() {
     setCurrentCountry(currentCountry);
   }, []);
 
+ 
+   const [title, setTitle] = useState("cases");
+
   return (
     <div className="App">
       <header className="App-header">
@@ -37,7 +40,7 @@ function App() {
       <main className={styles.main}>
         <div className={styles.listCountriesWrapper}>
           <section className="country-list">
-            <ListCountries countries={data.countries} setCountry={setCountry} />
+            <ListCountries countries={data.countries} setCountry={setCountry} title={title} setTitle={setTitle} />
           </section>
         </div>
         <MapBox></MapBox>
