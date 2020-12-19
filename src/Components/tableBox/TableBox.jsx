@@ -1,4 +1,6 @@
 import styles from "./TableBox.module.scss";
+import showGlobalCases from "./showGlobalCases";
+import Table from './Table/Table'
 
 export const TableBox = (props) => {
   return (
@@ -6,49 +8,39 @@ export const TableBox = (props) => {
       <div>
         <span
           onClick={() => {
-            console.log("click");
-            props.changePopulationStatus(props.curentCategories.population);
-            console.log(props.curentCategories);
+            props.setCurrentPopulationIndex(
+              props.changeCategoryStatus(props.currentPopulationIndex)
+            );
           }}
         >
-          {props.curentCategories.population}
+          {props.dataCategories.population[props.currentPopulationIndex]}
         </span>
       </div>
-      <table border="2" width="25%" cellSpacing="0">
-        <thead>
-          <tr>
-            {props.dataTypes.map((element, index) => {
-              return <th key={index}>{element}</th>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>100</td>
-            {/* Dinamic */}
-            <td>50</td>
-            {/* Dinamic */}
-            <td>40</td>
-            {/* Dinamic */}
-            <td>{props.curentCategories.period}</td>
-          </tr>
-        </tbody>
-      </table>
+
+      <Table
+        populationPerCountry={props.populationPerCountry}
+        dataTypes={props.dataCategories.dataType}
+        global={props.global}
+        currentPopulationIndex={props.currentPopulationIndex}
+        currentPeriodIndex={props.currentPeriodIndex}
+        currentTerritoryIndex={props.currentTerritoryIndex}
+        dataCategories={props.dataCategories}
+
+        setCurrentPeriodIndex={props.setCurrentPeriodIndex}
+        changeCategoryStatus={props.changeCategoryStatus}
+        showGlobalCases={showGlobalCases}
+      />
       <div>
-        <span>{props.curentCategories.territory}</span>
+        <span
+          onClick={() => {
+            props.setCurrentTerritoryIndex(
+              props.changeCategoryStatus(props.currentTerritoryIndex)
+            );
+          }}
+        >
+          {props.dataCategories.territory[props.currentTerritoryIndex]}
+        </span>
       </div>
     </div>
   );
 };
-
-// export const Summary = (props) => {
-//   return (
-//     <ul>
-//       {props.countries.map((country) => (
-//         <li key={country.CountryCode} onClick={() => props.setCountry(country)}>
-//           <p>{country.Country}</p>
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };

@@ -5,41 +5,57 @@ import { ShowTotalCases } from "./Components/ShowTotalCases";
 import { TableBox } from "./Components/tableBox/TableBox";
 
 const API = "https://api.covid19api.com/summary";
+const countriesAPI ='https://restcountries.eu/rest/v2/all?fields=name;population;flag';
 
 function App() {
-  const dataTypes = ["Cases", "Deaths", "Recovered"];
 
   const dataCategories = {
+    dataType: ["Cases", "Deaths", "Recovered"],
     period: ['For all time', 'For the last day'],
     territory: ['World', 'Country'],
     population: ['Total', 'Per 100,000 population'],
   }
-  const [curentCategories, setCurrentCategories] = useState({
-      period: dataCategories.period[0],
-      territory: dataCategories.territory[0],
-      population: dataCategories.population[0],
-    }
-  )
 
-  function changePopulationStatus(categoryStatus) {
+  const [currentPeriodIndex, setCurrentPeriodIndex] =  useState(0);
+  const [currentTerritoryIndex, setCurrentTerritoryIndex] =  useState(0);
+  const [currentPopulationIndex, setCurrentPopulationIndex] =  useState(0);
 
-    if (dataCategories.population.indexOf(categoryStatus) === 0) {
-      curentCategories.population  = dataCategories.population[1]
-    } else {
-      curentCategories.population  = dataCategories.population[0]
-    }
+ function changeCategoryStatus(currentStatus) {
+   return currentStatus === 0 ? 1 : 0
+ }
 
-    setCurrentCategories(curentCategories);
-  }
+ const [data, setData] = useState({
+    countries: [],
+    global: {},
+   });
 
-  const [data, setData] = useState({ countries: [] });
+  // console.log('data', data);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(API);
       const result = await response.json();
       // console.log(result);
-      setData({ countries: result.Countries });
+      setData({
+        countries: result.Countries,
+        global: result.Global,
+       });
+    };
+
+    fetchData();
+  }, []);
+
+  const [populationData, setPopulationData] = useState({
+    population: []
+   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(countriesAPI);
+      const result = await response.json();
+      setPopulationData({
+        population: result,
+       });
     };
 
     fetchData();
@@ -63,11 +79,22 @@ function App() {
       )}
       <Summary countries={data.countries} setCountry={setCountry} />
       <TableBox
-        changePopulationStatus={changePopulationStatus}
-        curentCategories={curentCategories}
+        dataCategories = {dataCategories}
+        populationPerCountry={populationData.population}
+
+        currentPopulationIndex={currentPopulationIndex}
+        setCurrentPopulationIndex={setCurrentPopulationIndex}
+
+        currentTerritoryIndex={currentTerritoryIndex}
+        setCurrentTerritoryIndex={setCurrentTerritoryIndex}
+
+        currentPeriodIndex={currentPeriodIndex}
+        setCurrentPeriodIndex={setCurrentPeriodIndex}
+
+        changeCategoryStatus={changeCategoryStatus}
         countries={data.countries}
+        global={data.global}
         setCountry={setCountry}
-        dataTypes={dataTypes}
       />
     </div>
   );
