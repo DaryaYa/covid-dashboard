@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
     "chart.js": "^2.9.4",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-chartjs-3": "^2.7.7",
@@ -38,5 +37,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.0.0"
   }
 }
