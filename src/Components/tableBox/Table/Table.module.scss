@@ -1,0 +1,25 @@
+.toggler {
+  color: rgb(189, 189, 189);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(53, 48, 48, 0.8);
+  }
+}
+
+.column {
+  width: 25%;
+}
+
+tr {
+  height: 30px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid rgb(92, 92, 92);
+}
+

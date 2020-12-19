@@ -1,11 +1,11 @@
 import styles from "./TableBox.module.scss";
 import showGlobalCases from "./showGlobalCases";
-import Table from './Table/Table'
+import Table from "./Table/Table";
 
 export const TableBox = (props) => {
   return (
     <div className={styles.tableBox}>
-      <div>
+      <div className={styles.toggler}>
         <span
           onClick={() => {
             props.setCurrentPopulationIndex(
@@ -16,7 +16,6 @@ export const TableBox = (props) => {
           {props.dataCategories.population[props.currentPopulationIndex]}
         </span>
       </div>
-
       <Table
         populationPerCountry={props.populationPerCountry}
         dataTypes={props.dataCategories.dataType}
@@ -25,12 +24,12 @@ export const TableBox = (props) => {
         currentPeriodIndex={props.currentPeriodIndex}
         currentTerritoryIndex={props.currentTerritoryIndex}
         dataCategories={props.dataCategories}
-
         setCurrentPeriodIndex={props.setCurrentPeriodIndex}
         changeCategoryStatus={props.changeCategoryStatus}
         showGlobalCases={showGlobalCases}
       />
-      <div>
+
+      <div className={styles.toggler}>
         <span
           onClick={() => {
             props.setCurrentTerritoryIndex(
