@@ -1,16 +1,15 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { useState, useEffect, useCallback } from 'react';
-import { Header } from './Components/Header';
-import { ListCountries } from './Components/ListCountries';
-import { MapBox } from './Components/MapBox';
-import { ShowTotalCases } from './Components/ShowTotalCases';
-import { ChartBox } from './Components/ChartBox';
+import { useState, useEffect, useCallback } from "react";
+import { Header } from "./Components/Header";
+import { ListCountries } from "./Components/ListCountries";
+import { MapBox } from "./Components/MapBox";
+import { ShowTotalCases } from "./Components/ShowTotalCases";
+import { ChartBox } from "./Components/ChartBox";
 import TableBox from './Components/tableBox/TableBox';
 
-import styles from './app.module.scss';
+import styles from "./app.module.scss";
 
 // const API = "https://api.covid19api.com/summary";
-const API = 'https://corona.lmao.ninja/v2/countries';
+const API = "https://corona.lmao.ninja/v2/countries";
 
 function App() {
   const dataCategories = {
@@ -29,10 +28,8 @@ function App() {
   }
 
   const [data, setData] = useState({ countries: [] });
-
   useEffect(() => {
     const fetchData = async () => {
-      // eslint-disable-next-line no-undef
       const response = await fetch(API);
       const result = await response.json();
       console.log(result);
@@ -44,8 +41,8 @@ function App() {
 
   const [currentCountry, setCurrentCountry] = useState(null);
 
-  const setCountry = useCallback((country) => {
-    setCurrentCountry(country);
+  const setCountry = useCallback((currentCountry) => {
+    setCurrentCountry(currentCountry);
   }, []);
 
   return (
@@ -59,13 +56,13 @@ function App() {
             <ListCountries countries={data.countries} setCountry={setCountry} />
           </section>
         </div>
-        <MapBox />
+        <MapBox></MapBox>
         <div className={styles.showTotalCasesWrapper}>
-          {/* {currentCountry && (
+          {currentCountry && (
             <ShowTotalCases
               currentCountryTotalConfirmed={currentCountry.cases}
-            />
-          )} */}
+            ></ShowTotalCases>
+          )}
           <TableBox
             currentCountry={currentCountry}
             dataCategories={dataCategories}
@@ -80,7 +77,7 @@ function App() {
             setCountry={setCountry}
           />
         </div>
-        <ChartBox />
+        <ChartBox></ChartBox>
       </main>
     </div>
   );
