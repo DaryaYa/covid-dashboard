@@ -28,31 +28,35 @@ function App() {
         setCurrentCountry(currentCountry);
     }, []);
 
+     const [title, setTitle] = useState("cases");
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <Header />
-            </header>
-            <main className={styles.main}>
-                <div className={styles.listCountriesWrapper}>
-                    <section className="country-list">
-                        <ListCountries
-                            countries={data.countries}
-                            setCountry={setCountry}
-                        />
-                    </section>
-                </div>
-                <MapBox countriesInfo={data.countries}></MapBox>
-                <div className={styles.showTotalCasesWrapper}>
-                    {currentCountry && (
-                        <ShowTotalCases
-                            currentCountryTotalConfirmed={currentCountry.cases}
-                        ></ShowTotalCases>
-                    )}
-                </div>
-                <ChartBox></ChartBox>
-            </main>
-        </div>
+      <div className="App">
+        <header className="App-header">
+          <Header />
+        </header>
+        <main className={styles.main}>
+          <div className={styles.listCountriesWrapper}>
+            <section className="country-list">
+              <ListCountries
+                countries={data.countries}
+                setCountry={setCountry}
+                title={title}
+                setTitle={setTitle}
+              />
+            </section>
+          </div>
+          <MapBox countriesInfo={data.countries}></MapBox>
+          <div className={styles.showTotalCasesWrapper}>
+            {currentCountry && (
+              <ShowTotalCases
+                currentCountryTotalConfirmed={currentCountry.cases}
+              ></ShowTotalCases>
+            )}
+          </div>
+          <ChartBox></ChartBox>
+        </main>
+      </div>
     );
 }
 
