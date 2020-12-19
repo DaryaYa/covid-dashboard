@@ -45,6 +45,8 @@ function App() {
     setCurrentCountry(currentCountry);
   }, []);
 
+  const [title, setTitle] = useState("cases");
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,10 +55,15 @@ function App() {
       <main className={styles.main}>
         <div className={styles.listCountriesWrapper}>
           <section className="country-list">
-            <ListCountries countries={data.countries} setCountry={setCountry} />
+          <ListCountries
+                countries={data.countries}
+                setCountry={setCountry}
+                title={title}
+                setTitle={setTitle}
+              />
           </section>
         </div>
-        <MapBox></MapBox>
+        <MapBox countriesInfo={data.countries}></MapBox>
         <div className={styles.showTotalCasesWrapper}>
           {currentCountry && (
             <ShowTotalCases
