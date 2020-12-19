@@ -16,7 +16,6 @@ function App() {
         const fetchData = async () => {
             const response = await fetch(API);
             const result = await response.json();
-            console.log(result);
             setData({ countries: result });
         };
 
