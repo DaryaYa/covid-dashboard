@@ -16,21 +16,17 @@ function App() {
         const fetchData = async () => {
             const response = await fetch(API);
             const result = await response.json();
-            setData({ result });
+            setData({ countries: result });
         };
 
         fetchData();
     }, []);
-    console.log("data", data);
 
     const [currentCountry, setCurrentCountry] = useState(null);
 
     const setCountry = useCallback((currentCountry) => {
         setCurrentCountry(currentCountry);
     }, []);
-    //
-    //
-    //
     return (
         <div className="App">
             <header className="App-header">
@@ -39,19 +35,17 @@ function App() {
             <main className={styles.main}>
                 <div className={styles.listCountriesWrapper}>
                     <section className="country-list">
-                        {/* <ListCountries
-                            countries={data}
+                        <ListCountries
+                            countries={data.countries}
                             setCountry={setCountry}
-                        /> */}
+                        />
                     </section>
                 </div>
-                <MapBox countriesInfo={data}></MapBox>
+                <MapBox countriesInfo={data.countries}></MapBox>
                 <div className={styles.showTotalCasesWrapper}>
                     {currentCountry && (
                         <ShowTotalCases
-                            currentCountryTotalConfirmed={
-                                currentCountry.TotalConfirmed
-                            }
+                            currentCountryTotalConfirmed={currentCountry.cases}
                         ></ShowTotalCases>
                     )}
                 </div>
