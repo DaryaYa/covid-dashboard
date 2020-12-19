@@ -20,7 +20,7 @@ export const ListCountries = ({ countries, title, setTitle, setCountry }) => {
             className={styles.li}
             // key={country.countryInfo._id}
             key={index}
-            onClick={() => this.setCountry(country)}
+            onClick={() => setCountry(country)}
           >
             <p>
               <span className={styles.info}>{country[title]}</span>
