@@ -11,47 +11,49 @@ import styles from "./app.module.scss";
 const API = "https://corona.lmao.ninja/v2/countries";
 
 function App() {
-  const [data, setData] = useState({ countries: [] });
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(API);
-      const result = await response.json();
-      console.log(result);
-      setData({ countries: result });
-    };
+    const [data, setData] = useState({ countries: [] });
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(API);
+            const result = await response.json();
+            setData({ countries: result });
+        };
 
-    fetchData();
-  }, []);
+        fetchData();
+    }, []);
 
-  const [currentCountry, setCurrentCountry] = useState(null);
+    const [currentCountry, setCurrentCountry] = useState(null);
 
-  const setCountry = useCallback((currentCountry) => {
-    setCurrentCountry(currentCountry);
-  }, []);
+    const setCountry = useCallback((currentCountry) => {
+        setCurrentCountry(currentCountry);
+    }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
-      <main className={styles.main}>
-        <div className={styles.listCountriesWrapper}>
-          <section className="country-list">
-            <ListCountries countries={data.countries} setCountry={setCountry} />
-          </section>
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Header />
+            </header>
+            <main className={styles.main}>
+                <div className={styles.listCountriesWrapper}>
+                    <section className="country-list">
+                        <ListCountries
+                            countries={data.countries}
+                            setCountry={setCountry}
+                        />
+                    </section>
+                </div>
+                <MapBox countriesInfo={data.countries}></MapBox>
+                <div className={styles.showTotalCasesWrapper}>
+                    {currentCountry && (
+                        <ShowTotalCases
+                            currentCountryTotalConfirmed={currentCountry.cases}
+                        ></ShowTotalCases>
+                    )}
+                </div>
+                <ChartBox></ChartBox>
+            </main>
         </div>
-        <MapBox></MapBox>
-        <div className={styles.showTotalCasesWrapper}>
-          {currentCountry && (
-            <ShowTotalCases
-              currentCountryTotalConfirmed={currentCountry.cases}
-            ></ShowTotalCases>
-          )}
-        </div>
-        <ChartBox></ChartBox>
-      </main>
-    </div>
-  );
+    );
 }
 
 export default App;
