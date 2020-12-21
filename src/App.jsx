@@ -63,12 +63,12 @@ function App() {
       <main className={styles.main}>
         <div className={styles.listCountriesWrapper}>
           <section className="country-list">
-          <ListCountries
-                countries={data.countries}
-                setCountry={setCountry}
-                title={title}
-                setTitle={setTitle}
-              />
+            <ListCountries
+              countries={data.countries}
+              setCountry={setCountry}
+              title={title}
+              setTitle={setTitle}
+            />
           </section>
         </div>
         <MapBox countriesInfo={data.countries}></MapBox>
@@ -92,9 +92,10 @@ function App() {
             setCountry={setCountry}
           />
         </div>
-        <ChartBox>
-          
-        </ChartBox>
+        <ChartBox
+          setCountry={setCountry}
+          currentCountry={currentCountry}
+        ></ChartBox>
       </main>
     </div>
   );
