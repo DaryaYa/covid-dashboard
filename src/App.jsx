@@ -5,7 +5,6 @@ import { MapBox } from "./Components/MapBox";
 import { ShowTotalCases } from "./Components/ShowTotalCases";
 import { ChartBox } from "./Components/ChartBox";
 import TableBox from './Components/tableBox/TableBox';
-import { Charts } from "./Components/Charts";
 
 import styles from "./app.module.scss";
 

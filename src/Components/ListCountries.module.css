@@ -20,3 +20,10 @@
   position: sticky;
   top: 0%;
 }
+
+.buttons :hover {
+  cursor: pointer;
+  background-color: darkblue;
+  color: antiquewhite;
+  border: 1px solid darkblue;
+}
