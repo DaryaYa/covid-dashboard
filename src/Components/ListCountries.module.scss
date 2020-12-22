@@ -19,4 +19,11 @@
 .buttons {
     position: sticky;
     top: 0%;
+     & :hover {
+        cursor: pointer;
+        background-color: darkblue;
+        color: antiquewhite;
+        border: 1px solid darkblue;
+    }
+
 }
