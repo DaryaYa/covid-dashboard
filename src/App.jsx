@@ -7,7 +7,8 @@ import TableBox from './Components/tableBox/TableBox';
 
 import styles from "./app.module.scss";
 
-// const API = "https://api.covid19api.com/summary";
+// const API1 =
+//   "https://api.covid19api.com/world?from=2020-04-20T00:00:00Z&to=2020-12-20T00:00:00Z";
 const API = "https://corona.lmao.ninja/v2/countries";
 
 function App() {
@@ -39,7 +40,13 @@ function App() {
 
     fetchData();
   }, []);
-
+  // -------------------------
+//   const fetchData1 = async () => {
+//       const response = await fetch(API1);
+//       const result = await response.json();
+//       console.log(result);
+//   }
+// fetchData1();
   const [currentCountry, setCurrentCountry] = useState(null);
 
   const setCountry = useCallback((currentCountry) => {
@@ -56,7 +63,7 @@ function App() {
       <main className={styles.main}>
         <div className={styles.listCountriesWrapper}>
           <section className="country-list">
-          <ListCountries
+                    <ListCountries
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
                 countries={data.countries}
@@ -82,7 +89,10 @@ function App() {
             setCountry={setCountry}
           />
         </div>
-        <ChartBox></ChartBox>
+        <ChartBox
+          setCountry={setCountry}
+          currentCountry={currentCountry}
+        ></ChartBox>
       </main>
     </div>
   );

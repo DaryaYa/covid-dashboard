@@ -17,7 +17,13 @@
 }
 
 .buttons {
-  position: fixed;
-  top: 7%;
-  left: 1%;
+  position: sticky;
+  top: 0%;
+}
+
+.buttons :hover {
+  cursor: pointer;
+  background-color: darkblue;
+  color: antiquewhite;
+  border: 1px solid darkblue;
 }
