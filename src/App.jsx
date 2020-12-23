@@ -3,7 +3,7 @@ import { Header } from "./Components/Header";
 import ListCountries from "./Components/ListCountries";
 import { MapBox } from "./Components/MapBox";
 import { ChartBox } from "./Components/ChartBox";
-import TableBox from './Components/tableBox/TableBox';
+import TableBox from "./Components/tableBox/TableBox";
 
 import styles from "./app.module.scss";
 
@@ -21,13 +21,13 @@ function App() {
     population: ['Total', 'Per 100,000 population'],
   };
 
-  const [currentPeriodIndex, setCurrentPeriodIndex] = useState(0);
-  const [currentTerritoryIndex, setCurrentTerritoryIndex] = useState(0);
-  const [currentPopulationIndex, setCurrentPopulationIndex] = useState(0);
+    const [currentPeriodIndex, setCurrentPeriodIndex] = useState(0);
+    const [currentTerritoryIndex, setCurrentTerritoryIndex] = useState(0);
+    const [currentPopulationIndex, setCurrentPopulationIndex] = useState(0);
 
-  function changeCategoryStatus(currentStatus) {
-    return currentStatus === 0 ? 1 : 0;
-  }
+    function changeCategoryStatus(currentStatus) {
+        return currentStatus === 0 ? 1 : 0;
+    }
 
   const [data, setData] = useState({ countries: [] });
   useEffect(() => {
@@ -49,12 +49,11 @@ function App() {
 // fetchData1();
   const [currentCountry, setCurrentCountry] = useState(null);
 
-  const setCountry = useCallback((currentCountry) => {
-    setCurrentCountry(currentCountry);
-  }, []);
+    const setCountry = useCallback((currentCountry) => {
+        setCurrentCountry(currentCountry);
+    }, []);
 
-  const [title, setTitle] = useState("cases");
-
+    const [title, setTitle] = useState("cases");
   return (
     <div className="App">
       <header className="App-header">
