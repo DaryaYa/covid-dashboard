@@ -25,8 +25,7 @@ body {
 }
 
 .country-list {
-  height: 92vh;
-  margin-top: 5%;
+  height: 95vh;
   overflow: auto;
   background-color: #222222;
 }
@@ -49,4 +48,3 @@ body::-webkit-scrollbar-thumb {
   border: 2px solid #dadada;
   /* creates padding around scroll thumb */
 }
-/*# sourceMappingURL=main.css.map */
