@@ -262,7 +262,7 @@ export default function virtualKeyBoard(setSearchTerm, searchTerm) {
 
       // Use keyboard for all elements with the class useKeyboardInput
       document.querySelectorAll(".useKeyboardInput").forEach((element) => {
-        console.log('hello from eventlistener maker');
+       // console.log('hello from eventlistener maker');
         element.addEventListener("focus", () => {
           this.open(element.value, (currentValue) => {
             element.value = currentValue;
@@ -774,7 +774,7 @@ export default function virtualKeyBoard(setSearchTerm, searchTerm) {
 
   // window.addEventListener('DOMContentLoaded', () => {
   // });
-console.log(document.querySelector(".keyboard"));
+//console.log(document.querySelector(".keyboard"));
   if (!document.querySelector(".keyboard")) {
     keyboard.init();
   }

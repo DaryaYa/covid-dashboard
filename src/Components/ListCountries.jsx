@@ -38,11 +38,12 @@ export default function ListCountries({
         >
           Total cases
         </button>
-      </div>
       <Input
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-      />
+      />  
+      </div>
+      
       <ul>
         {sortByTotal(countries, title).filter((value) => {
           if (searchTerm === '') {

@@ -32,6 +32,8 @@
   margin: 10px auto;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 1%;
 }
 
 button {
@@ -51,6 +53,7 @@ button {
 }
 
 input {
-  width: 80%;
+  box-sizing: border-box;
+  width: 100%;
   margin: 0 auto;
 }
