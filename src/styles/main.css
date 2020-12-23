@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,16 +11,13 @@ html {
 
 body {
   height: 100vh;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.header {
-  background-color: blanchedalmond;
-  color: brown;
-}
-
-h1 {
-  text-align: center;
+.table {
+  width: 25%;
+  height: 90%;
+  background-color: aquamarine;
 }
 
 .total-cases {
@@ -33,20 +31,21 @@ h1 {
 }
 
 body::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   /* width of the entire scrollbar */
 }
 
 body::-webkit-scrollbar-track {
-  background: orange;
+  background: #dadada;
   /* color of the tracking area */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.767);
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
-  border: 3px solid orange;
+  border: 2px solid #dadada;
   /* creates padding around scroll thumb */
 }
+/*# sourceMappingURL=main.css.map */

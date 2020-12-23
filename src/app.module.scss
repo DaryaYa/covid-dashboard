@@ -1,15 +1,15 @@
 .main {
-  display: grid;
-  grid-template-columns: auto 55% 27%;
-  gap: 10px;
+    display: grid;
+    grid-template-columns: auto 55% 27%;
+    gap: 10px;
 }
 
 .listCountriesWrapper {
-  overflow: auto;
-  grid-area: 1/1/3/2;
+    overflow: auto;
+    grid-area: 1/1/3/2;
 }
 
 .showTotalCasesWrapper {
-  background-color: aquamarine;
-  grid-area: 1/3/2/4;
+    background-color: aquamarine;
+    grid-area: 1/3/2/4;
 }
