@@ -24,9 +24,10 @@ body {
 }
 
 .country-list {
-    height: 85vh;
-    overflow: auto;
-    background-color: rgb(34, 34, 34);
+  height: 92vh;
+  margin-top: 5%;
+  overflow: auto;
+  background-color: rgb(34, 34, 34);
 }
 
 body::-webkit-scrollbar {

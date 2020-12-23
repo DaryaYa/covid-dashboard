@@ -1,3 +1,8 @@
+.listCountries {
+  display: flex;
+  flex-direction: column;
+}
+
 .info {
   margin: 0 5px;
   font-weight: bold;
@@ -8,6 +13,11 @@
   line-height: 2.5;
   color: wheat;
   border-bottom: 1px solid wheat;
+  cursor: pointer;
+}
+
+.li:hover {
+  background-color: rgba(53, 48, 48, 0.8);
 }
 
 .img {
@@ -17,8 +27,32 @@
 }
 
 .buttons {
-  position: fixed;
-  top: 7%;
-  left: 1%;
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 1%;
+}
+
+button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bdbdbd;
+  background-color: #222222;
+  border: 1px solid #5c5c5c;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(53, 48, 48, 0.8);
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=ListCountries.module.css.map */
