@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Header } from "./Components/Header";
-import { ListCountries } from "./Components/ListCountries";
+import ListCountries from "./Components/ListCountries";
 import { MapBox } from "./Components/MapBox";
-import { ShowTotalCases } from "./Components/ShowTotalCases";
 import { ChartBox } from "./Components/ChartBox";
 import TableBox from './Components/tableBox/TableBox';
 
@@ -13,6 +12,8 @@ import styles from "./app.module.scss";
 const API = "https://corona.lmao.ninja/v2/countries";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
   const dataCategories = {
     dataType: ['Cases', 'Deaths', 'Recovered'],
     period: ['For all time', 'For the last day'],
@@ -33,7 +34,7 @@ function App() {
     const fetchData = async () => {
       const response = await fetch(API);
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       setData({ countries: result });
     };
 
@@ -62,21 +63,18 @@ function App() {
       <main className={styles.main}>
         <div className={styles.listCountriesWrapper}>
           <section className="country-list">
-            <ListCountries
-              countries={data.countries}
-              setCountry={setCountry}
-              title={title}
-              setTitle={setTitle}
-            />
+                    <ListCountries
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                countries={data.countries}
+                setCountry={setCountry}
+                title={title}
+                setTitle={setTitle}
+              />
           </section>
         </div>
         <MapBox countriesInfo={data.countries}></MapBox>
         <div className={styles.showTotalCasesWrapper}>
-          {/* {currentCountry && (
-            <ShowTotalCases
-              currentCountryTotalConfirmed={currentCountry.cases}
-            ></ShowTotalCases>
-          )} */}
           <TableBox
             currentCountry={currentCountry}
             dataCategories={dataCategories}

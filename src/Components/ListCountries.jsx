@@ -1,21 +1,57 @@
-import styles from "./ListCountries.module.scss";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
+import styles from './ListCountries.module.scss';
+import Input from './Input/Input'
 
-export const ListCountries = ({ countries, title, setTitle, setCountry }) => {
+export default function ListCountries({
+  countries,
+  title,
+  setTitle,
+  setCountry,
+  searchTerm,
+  setSearchTerm,
+}) {
   function sortByTotal(arr, x) {
     arr.sort((a, b) => b[x] - a[x]);
     return arr;
   }
 
   return (
-    <div>
+    <div className={styles.listCountries}>
       <div className={styles.buttons}>
-        <button onClick={() => setTitle("deaths")}>Deaths</button>
-        <button onClick={() => setTitle("recovered")}>Recovered</button>
-        <button onClick={() => setTitle("cases")}>Total cases</button>
+        <button
+          type="button"
+          onClick={() => setTitle('deaths')}
+        >
+          Deaths
+        </button>
+        <button
+          type="button"
+          onClick={() => setTitle('recovered')}
+        >
+          Recovered
+        </button>
+        <button
+          type="button"
+          onClick={() => setTitle('cases')}
+        >
+          Total cases
+        </button>
       </div>
-
+      <Input
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       <ul>
-        {sortByTotal(countries, title).map((country, index) => (
+        {sortByTotal(countries, title).filter((value) => {
+          if (searchTerm === '') {
+            return value;
+          }
+          if (value.country.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return value;
+          }
+        }).map((country, index) => (
           <li
             className={styles.li}
             // key={country.countryInfo._id}
@@ -36,4 +72,4 @@ export const ListCountries = ({ countries, title, setTitle, setCountry }) => {
       </ul>
     </div>
   );
-};
+}

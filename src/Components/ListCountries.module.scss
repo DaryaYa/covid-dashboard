@@ -1,3 +1,9 @@
+
+.listCountries {
+  display: flex;
+  flex-direction: column;
+}
+
 .info {
   margin: 0 5px;
   font-weight: bold;
@@ -8,6 +14,11 @@
   line-height: 2.5;
   color: wheat;
   border-bottom: 1px solid wheat;
+
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(53, 48, 48, 0.8);
+  }
 }
 
 .img {
@@ -17,13 +28,29 @@
 }
 
 .buttons {
-    position: sticky;
-    top: 0%;
-     & :hover {
-        cursor: pointer;
-        background-color: darkblue;
-        color: antiquewhite;
-        border: 1px solid darkblue;
-    }
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
 
+button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(189, 189, 189);
+  background-color: rgb(34, 34, 34);
+
+  border: 1px solid rgb(92, 92, 92);
+
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(53, 48, 48, 0.8);
+  }
+}
+
+input {
+  width: 80%;
+  margin: 0 auto;
 }
