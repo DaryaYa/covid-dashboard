@@ -14,7 +14,7 @@ export default function Input({
       type="text"
       placeholder="Search..."
       onFocus={
-        virtualkeyBoard(setSearchTerm, searchTerm)
+        () => virtualkeyBoard(setSearchTerm, searchTerm)
       }
       onChange={(event) => {
         setSearchTerm(event.target.value);
