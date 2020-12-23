@@ -13,13 +13,11 @@ export default function Input({
       className='useKeyboardInput'
       type="text"
       placeholder="Search..."
-      onFocus={setSearchTerm && virtualkeyBoard(setSearchTerm, searchTerm)}
-      onChange={(event) => {
-        console.log(setSearchTerm, searchTerm);
-        // console.log(event.target.value);
-        setSearchTerm(event.target.value);
+      onFocus={
         virtualkeyBoard(setSearchTerm, searchTerm)
-        // console.log(searchTerm);
+      }
+      onChange={(event) => {
+        setSearchTerm(event.target.value);
       }} />
   );
 }
